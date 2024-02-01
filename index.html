@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>waeel website</title>
+    <title>waeel's website</title>
     <style>
-        body {
+       body {
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
@@ -12,37 +12,65 @@
         h1 {
             color: #8B0000; 
         }
-
-        button {
+        
+        
+        .button {
             background-color: #FFC0CB; 
             color: white;
             border: none;
             padding: 10px 20px;
             text-align: center;
             text-decoration: none;
-            display: inline-block;
+            display: block; 
+            margin: 10px auto; 
             font-size: 16px;
-            margin: 10px 2px;
             cursor: pointer;
             border-radius: 12px;
-            transition: background-color 0.3s ease; 
+            transition: background-color 0.3s ease;
         }
 
-        button:hover {
-            background-color: #f82121; 
+       
+        .button:hover {
+            background-color: #f82121;
         }
-    
-     </style>
+    </style>
 </head>
 <body>
 
-    <h1>Welcome to My Website</h1>
-    <p>im waeel khoury and this is the page for my main project</p>
-
-    <a href="https://waeelkhoury.github.io/story.html" style="display: block; margin-bottom: 10px;"><button>"second homework"</button></a>
-    <a href="/video-thirdhomework.html" style="display: block;"><button>"third homework"</button></a>
+    <h1>Welcome to waeel's Website</h1>
+    <p>I'm Waeel Khoury, and this is the page for my main project.</p>
 
     
+    <div class="row">
+        
+        <div class="column">
+            <h2>HTML</h2>
+            <a href="https://waeelkhoury.github.io/story.html" class="button">Second Homework</a>
+            <a href="/video-thirdhomework.html" class="button">Third Homework</a>
+        </div>
+
+        
+        <div class="column">
+            <h2>CSS</h2>
+            <div class="demo-css">This is a div to demonstrate CSS styling.</div>
+        </div>
+
+        
+        <div class="column">
+            <h2>JavaScript</h2>
+            
+        </div>
+
+        
+        <div class="column links">
+            <h2>External Links</h2>
+            <a href="https://www.w3schools.com" class="button">W3Schools</a>
+            <a href="http://www.csszengarden.com/" class="button">CSS Zen Garden</a>
+            <a href="https://developer.mozilla.org/en-US/" class="button">MDN Web Docs</a>
+            <a href="https://github.com/" class="button">GitHub</a>
+            <a href="https://stackoverflow.com/" class="button">Stack Overflow</a>
+        </div>
+    </div>
 
 </body>
 </html>
