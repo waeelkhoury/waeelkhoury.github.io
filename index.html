@@ -3,7 +3,7 @@
 <head>
     <title>waeel's website</title>
     <style>
-       body {
+        body {
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
@@ -12,26 +12,46 @@
         h1 {
             color: #8B0000; 
         }
-        
-        
+
+        .row {
+            display: flex; 
+            justify-content: center;
+        }
+
+        .column {
+            flex: 1; 
+            padding: 10px;
+            box-sizing: border-box; 
+        }
+
         .button {
-            background-color: #FFC0CB; 
+            background-color: #FFC0CB;
             color: white;
             border: none;
             padding: 10px 20px;
             text-align: center;
             text-decoration: none;
-            display: block; 
-            margin: 10px auto; 
+            display: block;
+            margin: 10px 0; 
             font-size: 16px;
             cursor: pointer;
             border-radius: 12px;
             transition: background-color 0.3s ease;
+            width: 80%; 
         }
 
-       
         .button:hover {
             background-color: #f82121;
+        }
+
+        .demo-css {
+            border: 3px solid #f82121;
+            background-color: #FFF0F5; 
+            padding: 20px;
+            margin: 10px auto;
+            border-radius: 12px; 
+            text-align: center;
+            width: 80%; 
         }
     </style>
 </head>
@@ -40,28 +60,23 @@
     <h1>Welcome to waeel's Website</h1>
     <p>I'm Waeel Khoury, and this is the page for my main project.</p>
 
-    
     <div class="row">
-        
         <div class="column">
             <h2>HTML</h2>
             <a href="https://waeelkhoury.github.io/story.html" class="button">Second Homework</a>
             <a href="/video-thirdhomework.html" class="button">Third Homework</a>
         </div>
 
-        
         <div class="column">
             <h2>CSS</h2>
             <div class="demo-css">This is a div to demonstrate CSS styling.</div>
         </div>
 
-        
         <div class="column">
             <h2>JavaScript</h2>
             
         </div>
 
-        
         <div class="column links">
             <h2>External Links</h2>
             <a href="https://www.w3schools.com" class="button">W3Schools</a>
