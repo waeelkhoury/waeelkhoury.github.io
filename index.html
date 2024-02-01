@@ -84,8 +84,10 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var video = document.getElementById('background-video');
-            video.muted = true;
-            video.play();
+            if (video) {
+                video.muted = true;  
+                video.play();       
+            }
         });
     </script>
     
