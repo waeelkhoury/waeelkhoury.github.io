@@ -53,9 +53,30 @@
             text-align: center;
             width: 80%; 
         }
+        .background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            background-size: cover;
+        }
+
+        /* Style for the content to ensure it's visible over the video */
+        .content {
+            position: relative;
+            z-index: 100;
+        }
     </style>
 </head>
 <body>
+    <video autoplay muted loop class="background-video">
+        <source src="path_to_your_video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
     <h1>Welcome to waeel's Website</h1>
     <p>I'm Waeel Khoury, and this is the page for my main project.</p>
