@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Embedded YouTube and Vimeo Videos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 560px; /* Adjust width as needed */
+            height: 315px; /* Adjust height as needed */
+            margin: 20px auto; /* Center the container, add some space above and below */
+            border: 3px solid #c4384d; /* Colored border */
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Optional shadow effect */
+        }
+        .hidden-video {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My Page</h1>
+    <p>YouTube video:</p>
+    
+    <div class="video-container">
+        
+        <iframe src="https://www.youtube.com/embed/TxpIIN4ClHY?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <iframe class="hidden-video" src="https://www.youtube.com/embed/olFHFbijAjM?autoplay=1&mute=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <p>Vimeo video:</p>
+    
+    <div class="video-container" style="height:360px;">
+        
+        <iframe id="vimeo-video" src="https://player.vimeo.com/video/896231378?h=66672d7d53&autoplay=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        // JavaScript to mute the Vimeo video
+        window.onload = function() {
+            var iframe = document.getElementById('vimeo-video');
+            var player = new Vimeo.Player(iframe);
+
+            player.setVolume(0); 
+        };
+    </script>
+    
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</body>
+</html>
