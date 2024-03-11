@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator - Waeel's Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #FFF0F5; 
+            color: #ffffff; 
+        }
+
+        .calculator {
+            background-color: #ffffff;
+            color: #333;
+            padding: 20px;
+            margin: 30px auto;
+            border-radius: 12px;
+            width: fit-content;
+        }
+
+        .calculator input[type="text"] {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            text-align: right;
+        }
+
+        .calculator .button {
+            background-color: #FFC0CB;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: background-color 0.3s ease;
+        }
+
+        .calculator .button:hover {
+            background-color: #f82121; 
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Simple Calculator</h2>
+        <input type="text" id="number1" placeholder="Enter number 1" />
+        <input type="text" id="number2" placeholder="Enter number 2" />
+        <br />
+        <button class="button" onclick="performOperation('+')">Add</button>
+        <button class="button" onclick="performOperation('-')">Subtract</button>
+        <button class="button" onclick="performOperation('*')">Multiply</button>
+        <button class="button" onclick="performOperation('/')">Divide</button>
+        <div id="result" class="result">Result: </div>
+    </div>
+    
+    <script>
+        function performOperation(operation) {
+            const num1 = document.getElementById('number1').value;
+            const num2 = document.getElementById('number2').value;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                alert('Please enter valid numbers.');
+                return;
+            }
+
+            let result;
+            switch (operation) {
+                case '+':
+                    result = Number(num1) + Number(num2);
+                    break;
+                case '-':
+                    result = Number(num1) - Number(num2);
+                    break;
+                case '*':
+                    result = Number(num1) * Number(num2);
+                    break;
+                case '/':
+                    if (num2 == '0') {
+                        alert('You tried to divide by zero.');
+                        return;
+                    } else {
+                        result = Number(num1) / Number(num2);
+                    }
+                    break;
+                default:
+                    result = 'Invalid operation';
+            }
+
+            document.getElementById('result').textContent = `Result: ${result}`;
+        }
+    </script>
+</body>
+</html>
