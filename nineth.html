@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>waeel's website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #FFF0F5; 
+        }
+
+        h1, p {
+            color: #ffffff; 
+        }
+
+        .row {
+            display: flex; 
+            justify-content: center;
+        }
+
+        .column {
+            flex: 1; 
+            padding: 10px;
+            box-sizing: border-box; 
+        }
+
+        .button, .nav-button {
+            background-color: #FFC0CB; 
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block; 
+            margin: 10px 0;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover, .nav-button:hover {
+            background-color: #f82121; 
+        }
+
+        .background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            background-size: cover;
+        }
+
+        .questionnaire-section {
+            background-color: #ffffff;
+            color: #333;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 12px;
+        }
+
+        .questionnaire-container {
+            display: none;
+        }
+
+        .questionnaire-container.active {
+            display: block;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .answers div {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #FFC0CB; 
+            margin: 5px 0;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .answers div:hover {
+            background-color: #f82121;
+        }
+
+        .menu {
+            margin-bottom: 20px;
+        }
+
+        .menu button {
+            padding: 5px 10px;
+            margin-right: 5px;
+            background-color: #FFC0CB; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu button:hover {
+            background-color: #f82121; 
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop playsinline class="background-video" id="background-video">
+        <source src="Flowing Liquid Red Orange Relaxing Lava Lamp Animation Background Loop 1080p.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <div class="content">
+        
+
+        <div class="questionnaire-section">
+            
+
+            <div class="menu">
+                <button onclick="goToQuestion(1)">Question 1</button>
+                <button onclick="goToQuestion(2)">Question 2</button>
+                <button onclick="goToQuestion(3)">Question 3</button>
+                <button onclick="goToQuestion(4)">Question 4</button>
+                <button onclick="goToQuestion(5)">Question 5</button>
+                
+            </div>
+            
+            <!-- Question 1 -->
+            <div id="question1" class="questionnaire-container active">
+                <div class="question">What is the capital of italy?</div>
+                <div class="answers">
+                    <div onclick="selectAnswer(1, 'A')">A) rome</div>
+                    <div onclick="selectAnswer(1, 'B')">B) sicily</div>
+                    <div onclick="selectAnswer(1, 'C')">C) vatican</div>
+                    <div onclick="selectAnswer(1, 'D')">D) napoly</div>
+                </div>
+            </div>
+            
+            <!-- Question 2 -->
+            <div id="question2" class="questionnaire-container">
+                <div class="question">What is 5 x 4?</div>
+                <div class="answers">
+                    <div onclick="selectAnswer(2, 'A')">A) 20</div>
+                    <div onclick="selectAnswer(2, 'B')">B) 30</div>
+                    <div onclick="selectAnswer(2, 'C')">C) 40</div>
+                    <div onclick="selectAnswer(2, 'D')">D) 50</div>
+                </div>
+            </div>
+            <!-- Question 3 -->
+            <div id="question3" class="questionnaire-container">
+                <div class="question">What is the legal age for drinking in the US?</div>
+                <div class="answers">
+                    <div onclick="selectAnswer(2, 'A')">A) 21</div>
+                    <div onclick="selectAnswer(2, 'B')">B) 18</div>
+                    <div onclick="selectAnswer(2, 'C')">C) 16</div>
+                    <div onclick="selectAnswer(2, 'D')">D) 20</div>
+                </div>
+            </div>
+            <!-- Question 4 -->
+            <div id="question4" class="questionnaire-container">
+                <div class="question">What is the healthiest food out of the following?</div>
+                <div class="answers">
+                    <div onclick="selectAnswer(2, 'A')">A) burger</div>
+                    <div onclick="selectAnswer(2, 'B')">B) pizza</div>
+                    <div onclick="selectAnswer(2, 'C')">C) salad</div>
+                    <div onclick="selectAnswer(2, 'D')">D) homemade chicken</div>
+                </div>
+            </div>
+            <!-- Question 5 -->
+            <div id="question5" class="questionnaire-container">
+                <div class="question">how old am i?</div>
+                <div class="answers">
+                    <div onclick="selectAnswer(2, 'A')">A) 25</div>
+                    <div onclick="selectAnswer(2, 'B')">B) 24</div>
+                    <div onclick="selectAnswer(2, 'C')">C) 23</div>
+                    <div onclick="selectAnswer(2, 'D')">D) 30</div>
+                </div>
+            </div>
+            
+           
+            <div>
+                <span class="nav-button" id="previousBtn" onclick="goToPreviousPage()">Previous</span>
+                <span class="nav-button" id="nextBtn" onclick="goToNextPage()">Next</span>
+            </div>
+        </div>
+        
+        <script>
+            let currentQuestion = 1;
+            const totalQuestions = 5;
+        
+            document.addEventListener('DOMContentLoaded', function () {
+                updateQuestionView(); 
+            });
+        
+            function goToPreviousPage() {
+                if (currentQuestion > 1) {
+                    currentQuestion--;
+                    updateQuestionView();
+                }
+            }
+        
+            function goToNextPage() {
+                if (currentQuestion < totalQuestions) {
+                    currentQuestion++;
+                    updateQuestionView(); 
+                }
+            }
+        
+            function goToQuestion(questionNumber) {
+                if (questionNumber >= 1 && questionNumber <= totalQuestions) {
+                    currentQuestion = questionNumber;
+                    updateQuestionView(); 
+                }
+            }
+        
+            function selectAnswer(questionNumber, answer) {
+               
+                if (answer === 'A') {
+                    alert('That is the right answer!');
+                } else {
+                    alert('Sorry, that is not the right answer.');
+                }
+               
+            }
+        
+            function updateQuestionView() {
+                for (let i = 1; i <= totalQuestions; i++) {
+                    const questionContainer = document.getElementById(`question${i}`);
+                    if (i === currentQuestion) {
+                        questionContainer.style.display = 'block';
+                    } else {
+                        questionContainer.style.display = 'none';
+                    }
+                }
+            }
+        </script>
+        
+</body>
+</html>
+
+    
