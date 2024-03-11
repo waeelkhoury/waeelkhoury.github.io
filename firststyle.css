@@ -1,0 +1,94 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sentences-container {
+    position: relative;
+    margin-bottom: 50px; /* Space between sentences and the box */
+    width: 100%;
+}
+
+.sentence, .sentence2, .sentence3{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+}
+
+.sentence {
+    animation: fadeIn 2s forwards, fadeOut 2s forwards 2s;
+}
+
+.sentence2 {
+    animation: fadeIn 2s forwards 5s,fadeOut 2s forwards 8s;
+}
+.sentence3 {
+    animation: fadeIn 2s forwards 10s,fadeOut 2s forwards 14s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; }
+}
+
+.box-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    margin: 5px; /* Spacing between boxes */
+    opacity: 0; /* Start invisible */
+    animation: fadeIn 2s forwards 1s, fadeout 6s forwards 6s; /* Adjust timing as needed */
+}
+
+/* Common fade-in for both boxes */
+.slide-left, .slide-right {
+    position: absolute;
+    opacity: 0; /* Start invisible */
+    /* Include only properties common to both */
+}
+
+/* Individual animations for sliding */
+.slide-left {
+    animation: fadeIn 2s forwards 3s, slideLeft 9s forwards 5s;
+}
+
+.slide-right {
+    animation: fadeIn 2s forwards 3s, slideRight 9s forwards 5s;
+}
+
+
+@keyframes slideLeft {
+    0%, 100% { transform: translateX(0); opacity: 1; } /* Start and end at original position */
+    50% { transform: translateX(-120px); opacity: 1; } /* Move to the left at the midpoint */
+}
+
+@keyframes slideRight {
+    0%, 100% { transform: translateX(0); opacity: 1; } /* Start and end at original position */
+    50% { transform: translateX(120px); opacity: 1; } /* Move to the right at the midpoint */
+}
+
