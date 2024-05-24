@@ -8,8 +8,8 @@ class Player {
         this.speed = 20; 
         this.gravity = 0.5;
         this.velocityY = 0;
-        this.health = 450;
-        this.maxHealth = 450;
+        this.health = 1000;
+        this.maxHealth = 1000;
         this.isAttacking = false;
         this.isMoving = false; 
         this.lastDirection = 'right'; 
