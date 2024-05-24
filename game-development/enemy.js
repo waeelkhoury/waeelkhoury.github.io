@@ -6,7 +6,7 @@ class Enemy {
         this.y = canvasHeight - player.height - 150; // Adjusted to match the player ground location
         this.width = player.width;
         this.height = player.height;
-        this.speed = 10;
+        this.speed = 6;
         this.gravity = 0.5;
         this.velocityY = 0;
         this.health = 200;
