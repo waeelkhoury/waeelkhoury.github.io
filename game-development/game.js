@@ -18,9 +18,9 @@ function gameInit() {
 
     // Create blocks
     blocks = [
-        new Block(300 * newscale , canvas.height - (500 * newscale), 300 * newscale , 120 * newscale,'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/padd.png'),
-        new Block(750 * newscale, canvas.height - (700 * newscale), 300 * newscale , 120 * newscale,'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/padd.png'),
-        new Block(1200 * newscale, canvas.height - (500 * newscale), 300 * newscale, 120 * newscale,'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/padd.png')
+        new Block(300 * newscale , canvas.height - (500 * newscale), 300 * newscale , 120 * newscale,'https://waeelkhoury.github.io/game-development/padd.png'),
+        new Block(750 * newscale, canvas.height - (700 * newscale), 300 * newscale , 120 * newscale,'https://waeelkhoury.github.io/game-development/padd.png'),
+        new Block(1200 * newscale, canvas.height - (500 * newscale), 300 * newscale, 120 * newscale,'https://waeelkhoury.github.io/game-development/padd.png')
         ];
     
 

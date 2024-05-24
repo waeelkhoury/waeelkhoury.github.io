@@ -27,12 +27,12 @@ class Enemy {
             attackingL: new Image(),
             deadwizard: new Image()
         };
-        this.sprites.standing.src = 'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/Wizard/Idle.png'; // Replace with the actual path
-        this.sprites.runningR.src = 'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/Wizard/Run.png'; // Replace with the actual path
-        this.sprites.runningL.src = 'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/Wizard/RunL.png'; // Replace with the actual path
-        this.sprites.attackingR.src = 'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/Wizard/Attack_3.png'; // Replace with the actual path
-        this.sprites.attackingL.src = 'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/Wizard/Attack_1.png'; // Add your left attack sprite path
-        this.sprites.deadwizard.src = 'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/Wizard/DeadWizard.png';
+        this.sprites.standing.src = 'https://waeelkhoury.github.io/game-development/Wizard/Idle.png'; // Replace with the actual path
+        this.sprites.runningR.src = 'https://waeelkhoury.github.io/game-development/Wizard/Run.png'; // Replace with the actual path
+        this.sprites.runningL.src = 'https://waeelkhoury.github.io/game-development/Wizard/RunL.png'; // Replace with the actual path
+        this.sprites.attackingR.src = 'https://waeelkhoury.github.io/game-development/Wizard/Attack_3.png'; // Replace with the actual path
+        this.sprites.attackingL.src = 'https://waeelkhoury.github.io/game-development/Wizard/Attack_1.png'; // Add your left attack sprite path
+        this.sprites.deadwizard.src = 'https://waeelkhoury.github.io/game-development/Wizard/DeadWizard.png';
 
         // Animation properties
         this.frameIndex = 0;
