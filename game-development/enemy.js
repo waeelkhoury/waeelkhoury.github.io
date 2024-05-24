@@ -6,11 +6,11 @@ class Enemy {
         this.y = canvasHeight - player.height - 150; // Adjusted to match the player ground location
         this.width = player.width;
         this.height = player.height;
-        this.speed = 2;
+        this.speed = 10;
         this.gravity = 0.5;
         this.velocityY = 0;
-        this.health = 100;
-        this.maxHealth = 100;
+        this.health = 200;
+        this.maxHealth = 200;
         this.grounded = false;
         this.isAttacking = false;
         this.isMoving = false; // Flag to track if the enemy is moving

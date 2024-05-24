@@ -3,21 +3,21 @@ class Player {
     constructor(x, y, width, height) {
         this.x = x;
         this.y = y;
-        this.width = width * 8 * newscale; // Adjust the size as needed
-        this.height = height * 5 * newscale; // Adjust the size as needed
-        this.speed = 30; // Increase speed for running
+        this.width = width * 8 * newscale; 
+        this.height = height * 5 * newscale; 
+        this.speed = 20; 
         this.gravity = 0.5;
         this.velocityY = 0;
-        this.health = 350;
-        this.maxHealth = 350;
+        this.health = 150;
+        this.maxHealth = 150;
         this.isAttacking = false;
-        this.isMoving = false; // Flag to track if the player is moving
-        this.lastDirection = 'right'; // Track the last direction
-        this.attackWidth = 30; // Define the attack width
-        this.attackHeight = 10; // Define the attack height
+        this.isMoving = false; 
+        this.lastDirection = 'right'; 
+        this.attackWidth = 30; 
+        this.attackHeight = 10; 
         this.grounded = false;
 
-        // Load sprite sheets
+        
         this.sprites = {
             standing: new Image(),
             runningR: new Image(),
@@ -31,16 +31,16 @@ class Player {
         this.sprites.attackingR.src = 'https://waeelkhoury.github.io/game-development/Musketeer/Attack_4.png';
         this.sprites.attackingL.src = 'https://waeelkhoury.github.io/game-development/Musketeer/Attack_4L.png'; 
 
-        // Animation properties
+        
         this.frameIndex = 0;
         this.tickCount = 0;
-        this.ticksPerFrame = 10; // Adjust this value to control the animation speed
+        this.ticksPerFrame = 10; 
         this.frameCounts = {
-            standing: 5, // Number of frames in the standing animation
-            runningL: 8,  // Number of frames in the running left animation
-            runningR: 8,  // Number of frames in the running right animation
-            attackingR: 5, // Number of frames in the attacking right animation
-            attackingL: 5  // Number of frames in the attacking left animation
+            standing: 5, 
+            runningL: 8, 
+            runningR: 8, 
+            attackingR: 5, 
+            attackingL: 5  
         };
         this.currentAnimation = 'standing';
     }
