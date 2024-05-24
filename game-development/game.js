@@ -14,7 +14,7 @@ function gameInit() {
 
     // Load background image
     backgroundImage = new Image();
-    backgroundImage.src = 'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/Battleground2.png'; 
+    backgroundImage.src = 'https://waeelkhoury.github.io/game-development/Battleground2.png'; 
 
     // Create blocks
     blocks = [
