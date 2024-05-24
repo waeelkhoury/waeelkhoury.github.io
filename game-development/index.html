@@ -12,13 +12,69 @@
             width: 100vw;
             height: 100vh;
         }
+        #starterScreen, #gameOverModal {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-family: Arial, sans-serif;
+            z-index: 10; /* Ensure it is on top of the game canvas */
+        }
+        #starterScreen {
+            display: flex;
+        }
+        #gameOverModal {
+            display: none; /* Hide by default */
+        }
+        #startButton, #restartButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+    <div id="starterScreen">
+        <div id="instructions">
+            <h1>Game Instructions</h1>
+            <p>Use 'A' and 'D' keys to move your character.</p>
+            <p>Press 'Space' to jump.</p>
+            <p>Press 'K' to attack.</p>
+            <p>Collect as many coins as you can before the time ends.</p>
+            <p>If the wizard kills you, you lose.</p>
+            <p>If you manage to kill the wizard before the time ends,</p>
+            <p>you gain 10 extra coins.</p>
+        </div>
+        <button id="startButton">Start Game</button>
+    </div>
+    <div id="gameOverModal">
+        <div id="gameOverMessage"></div>
+        <button id="restartButton">Restart Game</button>
+    </div>
     <canvas id="gameCanvas"></canvas>
+    <script src="https://waeelkhoury.github.io/game-development/coin.js"></script>
     <script src="https://waeelkhoury.github.io/game-development/block.js"></script>
     <script src="https://waeelkhoury.github.io/game-development/player.js"></script>
     <script src="https://waeelkhoury.github.io/game-development/enemy.js"></script>
     <script src="https://waeelkhoury.github.io/game-development/game.js"></script>
+    <script>
+        document.getElementById('startButton').addEventListener('click', function() {
+            document.getElementById('starterScreen').style.display = 'none';
+            gameInit();
+        });
+
+        document.getElementById('restartButton').addEventListener('click', function() {
+            document.getElementById('gameOverModal').style.display = 'none';
+            gameInit();
+        });
+    </script>
 </body>
 </html>

@@ -34,16 +34,16 @@ class Enemy {
         this.sprites.attackingL.src = 'https://waeelkhoury.github.io/game-development/Wizard/Attack_1.png'; // Add your left attack sprite path
         this.sprites.deadwizard.src = 'https://waeelkhoury.github.io/game-development/Wizard/DeadWizard.png';
 
-        // Animation properties
+        
         this.frameIndex = 0;
         this.tickCount = 0;
-        this.ticksPerFrame = 10; // Adjust this value to control the animation speed
+        this.ticksPerFrame = 10; 
         this.frameCounts = {
-            standing: 6, // Number of frames in the standing animation
-            runningL: 8,  // Number of frames in the running left animation
-            runningR: 8,  // Number of frames in the running right animation
-            attackingR: 7, // Number of frames in the attacking right animation
-            attackingL: 10 , // Number of frames in the attacking left animation
+            standing: 6, 
+            runningL: 8,  
+            runningR: 8,  
+            attackingR: 7, 
+            attackingL: 10 ,
             deadwizard: 4
         };
         this.currentAnimation = 'standing';
@@ -59,7 +59,7 @@ class Enemy {
 
     draw(context) {
         const sprite = this.sprites[this.currentAnimation];
-        if (sprite.complete) { // Check if the image is loaded before drawing
+        if (sprite.complete) { 
             const frameWidth = sprite.width / this.frameCounts[this.currentAnimation];
             const frameHeight = sprite.height;
 
@@ -85,7 +85,7 @@ class Enemy {
     
 
     followPlayer() {
-        const attackRange = 0; // Define the range within which the enemy will attack
+        const attackRange = 0; 
         if (this.player.x + (this.player.width / 2)  < this.x) {
             this.x -= this.speed;
             this.lastDirection = 'left';
@@ -98,6 +98,13 @@ class Enemy {
             this.attack();
         }
         this.isMoving = true;
+
+        if (this.player.y < this.y && this.grounded) {
+            if(this.x + (this.width/2) >= this.player.x && this.x - (this.width/2) <= this.player.x ){
+                this.jump();
+            }
+            
+        }
     }
 
     stopMoving() {
@@ -109,31 +116,37 @@ class Enemy {
 
     jump() {
         if (this.grounded) {
-            this.velocityY = -10; // Adjust jump strength as needed
+            this.velocityY = -20; 
             this.grounded = false;
             this.currentAnimation = this.lastDirection === 'right' ? 'runningR' : 'runningL';
         }
     }
 
     applyGravity(canvasHeight, blocks) {
+        
         this.velocityY += this.gravity;
         this.y += this.velocityY;
+        this.gravity = 0.5;
 
         // Check collision with blocks
         blocks.forEach(block => {
             if (this.y + this.height <= block.y && this.y + this.height + this.velocityY >= block.y &&
-                this.x < block.x + block.width && this.x + this.width > block.x) {
-                this.y = block.y - this.height;
+                this.x < block.x + (block.width / 5) && this.x + (this.width / 2) > block.x) {
+                this.y = block.y - this.height ;
                 this.velocityY = 0;
+                this.gravity = 0;
                 this.grounded = true;
             }
+            if (this.y + this.height >= canvasHeight - (200 * newscale)) {
+                this.y = canvasHeight - this.height - (200 * newscale);
+                this.velocityY = 0;
+                this.gravity = 0.5;
+                this.grounded = true;
+            }  
+            
         });
-
-        if (this.y + this.height > canvasHeight - (200 * newscale)) {
-            this.y = canvasHeight - this.height - (200 * newscale);
-            this.velocityY = 0;
-            this.grounded = true;
-        }
+        
+        
 
         if (!this.isAttacking && this.grounded && !this.isMoving) {
             this.currentAnimation = 'standing';
@@ -152,7 +165,7 @@ class Enemy {
                 } else {
                     this.currentAnimation = this.lastDirection === 'right' ? 'runningR' : 'runningL';
                 }
-            }, 1000); // Attack lasts for 1000 milliseconds
+            }, 1000); 
         }
     }
 

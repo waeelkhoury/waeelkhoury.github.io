@@ -11,6 +11,8 @@ function gameInit() {
     player = new Player(100, 0, 50, 100); 
     enemy = new Enemy(player, canvas.width, canvas.height);
     timer = 60;
+    collectedCoins = 0;
+    gameover = false;
 
     // Load background image
     backgroundImage = new Image();
@@ -22,6 +24,14 @@ function gameInit() {
         new Block(750 * newscale, canvas.height - (700 * newscale), 300 * newscale , 120 * newscale,'https://waeelkhoury.github.io/game-development/padd.png'),
         new Block(1200 * newscale, canvas.height - (500 * newscale), 300 * newscale, 120 * newscale,'https://waeelkhoury.github.io/game-development/padd.png')
         ];
+
+    coins = [
+        new Coin(500 * newscale , canvas.height - (700 * newscale), 70 * newscale, 230 * newscale, 'https://waeelkhoury.github.io/game-development/coin.png'),
+        new Coin(840 * newscale, canvas.height - (870 * newscale), 70 * newscale, 230 * newscale, 'https://waeelkhoury.github.io/game-development/coin.png'),
+        new Coin(840 * newscale, canvas.height - (400 * newscale), 70 * newscale, 230 * newscale, 'https://waeelkhoury.github.io/game-development/coin.png'),
+        new Coin(1320 * newscale, canvas.height - (680 * newscale), 70 * newscale, 230 * newscale, 'https://waeelkhoury.github.io/game-development/coin.png'),
+        new Coin(1320 * newscale, canvas.height - (400 * newscale), 70 * newscale, 230 * newscale, 'https://waeelkhoury.github.io/game-development/coin.png')
+    ];
     
 
     // Ensure the background image is fully loaded before starting the game loop
@@ -33,7 +43,11 @@ function gameInit() {
     startTimer();
 }
 
-function gameUpdate() {
+function gameUpdate()
+ {
+    if (gameover) {
+        return; // Stop the game update loop if game is over
+    }
     // Clear the canvas
     context.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -43,10 +57,21 @@ function gameUpdate() {
     // Draw blocks
     blocks.forEach(block => block.draw(context));
 
+    coins.forEach(coin => {
+        coin.draw(context);
+        if (coin.collect(player)) {
+            collectedCoins++;
+            console.log('Coin collected! Total:', collectedCoins);
+        }
+    });
+
     // Apply gravity and update positions
     player.applyGravity(canvas.height, blocks);
     enemy.applyGravity(canvas.height, blocks);
-
+    //timer 
+    drawTimer(context);
+    // Draw coin counter
+    drawCoinCounter(context);
     // Draw player and enemy
     player.draw(context);
     player.drawHealthBar(context);
@@ -54,19 +79,25 @@ function gameUpdate() {
     enemy.draw(context);
     enemy.drawHealthBar(context, canvas.width);
 
-    //timer 
-    drawTimer(context);
+    
+
+    
 
     // Check for collisions and determine the winner
     checkCollision(player, enemy);
-    if (checkWinner(enemy)) {
-        alert("You won");
-    } else if (checkWinner(player)) {
-        alert("Game Over! The enemy won.");
+    if (checkWinner(enemy) || checkWinner(player)) {
+        return;
     } else {
         requestAnimationFrame(gameUpdate);
     }
 }
+
+function drawCoinCounter(context) {
+    context.fillStyle = 'yellow';
+    context.font = `${40 * newscale}px Arial`;
+    context.fillText(`Coins: ${collectedCoins}`, (canvas.width /2) - (70 * newscale) , 140 * newscale);
+}
+
 
 function startTimer()
  {
@@ -75,14 +106,30 @@ function startTimer()
         if (timer <= 0) {
             clearInterval(timerInterval);
             gameover = true;
-            alert("Time's up! Game Over.");
+            showGameOver("Time's up! you won "+ collectedCoins + ' coins');
         }
     }, 1000);
 }
 
+function drawRoundedRect(context, x, y, width, height, radius) {
+    context.beginPath();
+    context.moveTo(x + radius, y);
+    context.lineTo(x + width - radius, y);
+    context.quadraticCurveTo(x + width, y, x + width, y + radius);
+    context.lineTo(x + width, y + height - radius);
+    context.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+    context.lineTo(x + radius, y + height);
+    context.quadraticCurveTo(x, y + height, x, y + height - radius);
+    context.lineTo(x, y + radius);
+    context.quadraticCurveTo(x, y, x + radius, y);
+    context.closePath();
+    context.fill();
+}
+
 function drawTimer(context) 
 {
-    context.fillStyle = 'white';
+    context.fillStyle = 'grey';
+    drawRoundedRect(context, (canvas.width / 2) - (100 * newscale), 35 * newscale, 220 * newscale, 140 * newscale, 20 * newscale); context.fillStyle = 'white';
     context.font = `${50 * newscale}px Arial`;
     context.fillText(`Time: ${timer}`, (canvas.width /2) - (90 * newscale) , 90 * newscale);
 }
@@ -139,8 +186,24 @@ function checkCollision(player, enemy) {
     }
 }
 
+function showGameOver(message) {
+    const gameOverModal = document.getElementById('gameOverModal');
+    const gameOverMessage = document.getElementById('gameOverMessage');
+    gameOverMessage.textContent = message;
+    gameOverModal.style.display = 'flex';
+}
+
 function checkWinner(character) {
-    return character.health <= 0;
+    if (character.health <= 0) {
+        gameover = true;
+        if (character === player) {
+            showGameOver("You died.");
+        } else {
+            showGameOver("You won " + (collectedCoins + 10) + " coins");
+        }
+        return true;
+    }
+    return false;
 }
 
 const keysPressed = {};
@@ -176,4 +239,4 @@ function setupEventListeners() {
     });
 }
 
-window.onload = gameInit;
+//window.onload = gameInit;

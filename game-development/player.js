@@ -8,8 +8,8 @@ class Player {
         this.speed = 30; // Increase speed for running
         this.gravity = 0.5;
         this.velocityY = 0;
-        this.health = 10000;
-        this.maxHealth = 10000;
+        this.health = 350;
+        this.maxHealth = 350;
         this.isAttacking = false;
         this.isMoving = false; // Flag to track if the player is moving
         this.lastDirection = 'right'; // Track the last direction
