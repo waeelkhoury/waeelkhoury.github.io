@@ -10,7 +10,7 @@ function gameInit() {
     gameover = false;
     player = new Player(100, 0, 50, 100); 
     enemy = new Enemy(player, canvas.width, canvas.height);
-    timer = 45;
+    timer = 40;
     collectedCoins = 0;
     gameover = false;
 
