@@ -25,11 +25,11 @@ class Player {
             attackingR: new Image(),
             attackingL: new Image()
         };
-        this.sprites.standing.src = 'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/Musketeer/Idle.png';
-        this.sprites.runningR.src = 'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/Musketeer/Run.png';
-        this.sprites.runningL.src = 'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/Musketeer/RunL.png';
-        this.sprites.attackingR.src = 'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/Musketeer/Attack_4.png';
-        this.sprites.attackingL.src = 'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/Musketeer/Attack_4L.png'; 
+        this.sprites.standing.src = 'https://waeelkhoury.github.io/game-development/Musketeer/Idle.png';
+        this.sprites.runningR.src = 'https://waeelkhoury.github.io/game-development/Musketeer/Run.png';
+        this.sprites.runningL.src = 'https://waeelkhoury.github.io/game-development/Musketeer/RunL.png';
+        this.sprites.attackingR.src = 'https://waeelkhoury.github.io/game-development/Musketeer/Attack_4.png';
+        this.sprites.attackingL.src = 'https://waeelkhoury.github.io/game-development/Musketeer/Attack_4L.png'; 
 
         // Animation properties
         this.frameIndex = 0;
