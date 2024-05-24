@@ -14,13 +14,13 @@ function gameInit() {
 
     // Load background image
     backgroundImage = new Image();
-    backgroundImage.src = '/Users/waeelkhoury/Desktop/game-development/Battleground2.png'; 
+    backgroundImage.src = 'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/Battleground2.png'; 
 
     // Create blocks
     blocks = [
-        new Block(300 * newscale , canvas.height - (500 * newscale), 300 * newscale , 120 * newscale,'/Users/waeelkhoury/Desktop/game-development/padd.png'),
-        new Block(750 * newscale, canvas.height - (700 * newscale), 300 * newscale , 120 * newscale,'/Users/waeelkhoury/Desktop/game-development/padd.png'),
-        new Block(1200 * newscale, canvas.height - (500 * newscale), 300 * newscale, 120 * newscale,'/Users/waeelkhoury/Desktop/game-development/padd.png')
+        new Block(300 * newscale , canvas.height - (500 * newscale), 300 * newscale , 120 * newscale,'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/padd.png'),
+        new Block(750 * newscale, canvas.height - (700 * newscale), 300 * newscale , 120 * newscale,'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/padd.png'),
+        new Block(1200 * newscale, canvas.height - (500 * newscale), 300 * newscale, 120 * newscale,'https://github.com/waeelkhoury/waeelkhoury.github.io/blob/main/game-development/padd.png')
         ];
     
 
